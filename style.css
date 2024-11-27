@@ -11,19 +11,17 @@ body {
 
 .container {
     max-width: 400px;
-    margin-left: 3%;
-    margin-right: 3%;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
     background-color: #fff;
 }
 
 .cover {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 20px;
     margin-bottom: 20px;
+    box-shadow: 0 4px 16px 0 rgba(80, 80, 80, 0.37);
 }
 
 audio {

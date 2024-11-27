@@ -11,9 +11,11 @@ body {
 
 .container {
     max-width: 400px;
+    margin-left: 2%;
+    margin-right: 2%;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: #fff;
 }
 
@@ -36,7 +38,7 @@ audio {
 
 /* Thèmes */
 .pink-theme {
-    background-color: #ffe4e1;
+    background-color: #fcd2de;
 }
 
 .green-theme {
@@ -44,7 +46,7 @@ audio {
 }
 
 .map-page {
-    background-color: #fafafa;
+    background-color: #fcd2de;
 }
 
 .map-image {

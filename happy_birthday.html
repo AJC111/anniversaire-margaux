@@ -25,12 +25,25 @@
             <p class="artist">Pour Little Sunshine 🌞</p>
         </div>
 
+        <div class="custom-audio-player">
+            <button class="play-pause-btn">⏵</button>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+            <audio id="audio" src="audio/happy_birthday_naza.mp3"></audio>
+        </div>        
+
+<!--
         <div class="controls-container">
             <audio controls>
                 <source src="audio/happy_birthday_naza.mp3" type="audio/mpeg">
                 Votre navigateur ne supporte pas l'élément audio.
             </audio>
         </div>
+-->
 
         <div class="progress-container">
             <span class="start-time">0:00</span>
@@ -48,6 +61,57 @@
 </div>
 
     <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const audio = document.getElementById("audio");
+            const playPauseBtn = document.querySelector(".play-pause-btn");
+            const progressContainer = document.querySelector(".progress-container");
+            const progressBar = document.querySelector(".progress-bar");
+            const currentTimeElem = document.querySelector(".current-time");
+            const durationElem = document.querySelector(".duration");
+
+            // Play / Pause toggle
+            playPauseBtn.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play();
+                    playPauseBtn.textContent = "⏸"; // Change to pause icon
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = "⏵"; // Change to play icon
+                }
+            });
+
+            // Update progress bar
+            audio.addEventListener("timeupdate", () => {
+                const progressPercent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.transform = `scaleX(${progressPercent / 100})`;
+                currentTimeElem.textContent = formatTime(audio.currentTime);
+            });
+
+            // Display audio duration when metadata is loaded
+            audio.addEventListener("loadedmetadata", () => {
+                durationElem.textContent = formatTime(audio.duration);
+            });
+
+            // Seek audio on progress bar click
+            progressContainer.addEventListener("click", (e) => {
+                const clickX = e.offsetX;
+                const width = progressContainer.clientWidth;
+                const duration = audio.duration;
+
+                audio.currentTime = (clickX / width) * duration;
+            });
+
+            // Format time helper function
+            function formatTime(time) {
+                const minutes = Math.floor(time / 60);
+                const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+                return `${minutes}:${seconds}`;
+            }
+        });
+
+/*
+
         const audio = document.querySelector('audio');
         const progressBar = document.querySelector('.progress');
         const startTime = document.querySelector('.start-time');
@@ -78,24 +142,10 @@
                 favoriteButton.textContent = '❤ Ajouter aux Favoris';
             }
         });
+*/
+
     </script>    
     
 </body>
-
-<!--
-<body class="spotify-page pink-theme">
-    <div class="container">
-        <img src="images/ballon_happy_birthday.png" alt="Happy Birthday Cover" class="cover">
-        <h1>Happy Birthday Margaux</h1>
-        <p>Pour Little Sunshine ❤</p>
-        <audio controls>
-            <source src="audio/happy_birthday_naza.mp3" type="audio/mpeg">
-            Votre navigateur ne supporte pas l'élément audio.
-        </audio>
-        <p class="description">Merci d’être ma plus belle lumière dans ce voyage de vie ❤</p>
-        <p class="description">J'éspère que cette chanson d'anniversaire te fera twerker 🎵</p>
-    </div>
-</body>
--->
 
 </html>

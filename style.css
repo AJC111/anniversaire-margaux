@@ -26,6 +26,7 @@ body.map-page {
     max-width: 600px;
     padding: 20px;
     text-align: center;
+    margin: 0 auto;
 }
 
 h1 {
@@ -52,6 +53,10 @@ p {
 
 
 .spotify-player {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 320px;
     border-radius: 20px;
     padding: 20px;
@@ -68,11 +73,27 @@ p {
     background-color: #d4f9e2;
 }
 
+
 .cover-container {
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     background-color: #ffffff;
-    display: inline-block;
     border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.cover-container img {
+    max-width: 48%;
+    height: auto;
+    margin: 1%;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 /*

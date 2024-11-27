@@ -10,10 +10,11 @@
         const progressBar = document.querySelector('.progress');
         const startTime = document.querySelector('.start-time');
         const endTime = document.querySelector('.end-time');
+        const favoriteButton = document.querySelector('.favorite-button');
     
         audio.addEventListener('timeupdate', () => {
-            const duration = audio.duration;
-            const currentTime = audio.currentTime;
+            const duration = audio.duration || 0;
+            const currentTime = audio.currentTime || 0;
     
             const progressPercentage = (currentTime / duration) * 100;
             progressBar.style.width = `${progressPercentage}%`;
@@ -27,11 +28,19 @@
             const secs = Math.floor(seconds % 60);
             return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
         }
-    </script> 
+    
+        favoriteButton.addEventListener('click', () => {
+            if (favoriteButton.textContent.includes('❤')) {
+                favoriteButton.textContent = '✔ Favoris ajouté';
+            } else {
+                favoriteButton.textContent = '❤ Ajouter aux Favoris';
+            }
+        });
+    </script>     
 </head>
 
-<body class="spotify-page">
-    <div class="spotify-player">
+<body>
+    <div class="spotify-player green">
 
         <div class="cover-container">
             <img src="images/three_little_birds_cover.jpg" alt="Three Little Birds Cover" class="cover">

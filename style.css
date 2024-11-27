@@ -116,17 +116,18 @@ audio {
 
 .favorite-button {
     border: none;
-    background-color: #ff89c0;
+    background-color: #e74c3c;
     color: #fff;
     padding: 10px 20px;
     font-size: 14px;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .favorite-button:hover {
-    background-color: #ff69b4;
+    background-color: #c0392b;
+    transform: scale(1.1);
 }
 
 .green-theme {

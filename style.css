@@ -28,11 +28,6 @@ body.map-page {
     text-align: center;
 }
 
-.content-container {
-    max-width: 600px;
-    padding: 20px;
-}
-
 h1 {
     font-size: 24px;
     font-weight: bold;

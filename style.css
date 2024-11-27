@@ -10,8 +10,8 @@ body {
 }
 
 body.map-page {
-    background-color: #ffebf0; /* Fond rose clair */
-    color: #333; /* Texte lisible */
+    background-color: #ffebf0;
+    color: #333;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -26,6 +26,11 @@ body.map-page {
     max-width: 600px;
     padding: 20px;
     text-align: center;
+}
+
+.content-container {
+    max-width: 600px;
+    padding: 20px;
 }
 
 h1 {
@@ -61,15 +66,18 @@ p {
 }
 
 .spotify-player.pink {
-    background-color:#ff89c0;
+    background-color: #ffd6e8;
 }
 
 .spotify-player.green {
-    background-color:#1db954;
+    background-color: #d4f9e2;
 }
 
 .cover-container {
     margin-bottom: 20px;
+    background-color: #ffffff;
+    display: inline-block;
+    border-radius: 15px;
 }
 
 /*

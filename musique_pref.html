@@ -7,16 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="spotify-page green-theme">
-    <div class="container">
-        <img src="images/three_little_birds_cover.jpg" alt="Three Little Birds Cover" class="cover">
-        <h1>Three Little Birds - Bob Marley</h1>
-        <p>Notre chanson ❤</p>
-        <audio controls>
-            <source src="bob_marley-three_little_birds.mp3" type="audio/mpeg">
-            Votre navigateur ne supporte pas l'élément audio.
-        </audio>
-        <p class="description">Un hymne à la simplicité et au bonheur, pour nous deux 🌿</p>
-        <p class="description">“Don’t worry about a thing, ‘cause every little thing gonna be alright.”</p>
+    <div class="spotify-player">
+        <!-- Image de couverture -->
+        <div class="cover-container">
+            <img src="images/cover2.jpg" alt="Three Little Birds Cover" class="cover">
+        </div>
+        <!-- Informations sur la musique -->
+        <div class="info-container">
+            <h1 class="song-title">Three Little Birds</h1>
+            <p class="artist">Bob Marley</p>
+        </div>
+        <!-- Contrôles du lecteur -->
+        <div class="controls-container">
+            <audio controls>
+                <source src="audio/three_little_birds.mp3" type="audio/mpeg">
+                Votre navigateur ne supporte pas l'élément audio.
+            </audio>
+        </div>
+        <!-- Barre de progression -->
+        <div class="progress-container">
+            <span class="start-time">0:00</span>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <span class="end-time">3:00</span>
+        </div>
     </div>
 </body>
 </html>

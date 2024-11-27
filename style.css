@@ -6,7 +6,21 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+.spotify-player {
+    width: 320px;
+    background-color: #2b2b2b;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     text-align: center;
+}
+
+.cover-container {
+    margin-bottom: 20px;
 }
 
 .container {
@@ -21,7 +35,7 @@ body {
     height: auto;
     border-radius: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 16px 0 rgba(80, 80, 80, 0.37);
+/*    box-shadow: 0 4px 16px 0 rgba(80, 80, 80, 0.37); */
 }
 
 audio {
@@ -32,6 +46,53 @@ audio {
 .description {
     font-size: 14px;
     color: #555;
+}
+
+/* Informations sur la musique */
+.info-container {
+    margin-bottom: 20px;
+}
+
+.song-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.artist {
+    font-size: 14px;
+    color: #a1a1a1;
+}
+
+/* Contrôles */
+.controls-container audio {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Barre de progression */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #a1a1a1;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background-color: #444;
+    border-radius: 2px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.progress {
+    width: 50%;
+    height: 100%;
+    background-color: #1db954; /* Couleur verte Spotify */
+    border-radius: 2px;
 }
 
 /* Thèmes */

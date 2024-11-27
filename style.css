@@ -52,6 +52,7 @@ p {
 }
 
 .spotify-player {
+    margin: 0 auto;
     width: 320px;
     border-radius: 20px;
     padding: 20px;

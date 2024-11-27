@@ -19,11 +19,11 @@ body {
 }
 
 .spotify-player.pink {
-    background-color: 2px solid #ff89c0; /* Rose */
+    background-color:#ff89c0;
 }
 
 .spotify-player.green {
-    background-color: 2px solid #1db954; /* Vert Spotify */
+    background-color:#1db954;
 }
 
 .cover-container {

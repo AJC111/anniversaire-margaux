@@ -4,39 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notre Musique Préférée</title>
-    <link rel="stylesheet" href="style.css">
-    <script>
-        const audio = document.querySelector('audio');
-        const progressBar = document.querySelector('.progress');
-        const startTime = document.querySelector('.start-time');
-        const endTime = document.querySelector('.end-time');
-        const favoriteButton = document.querySelector('.favorite-button');
-    
-        audio.addEventListener('timeupdate', () => {
-            const duration = audio.duration || 0;
-            const currentTime = audio.currentTime || 0;
-    
-            const progressPercentage = (currentTime / duration) * 100;
-            progressBar.style.width = `${progressPercentage}%`;
-    
-            startTime.textContent = formatTime(currentTime);
-            endTime.textContent = formatTime(duration);
-        });
-    
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-        }
-    
-        favoriteButton.addEventListener('click', () => {
-            if (favoriteButton.textContent.includes('❤')) {
-                favoriteButton.textContent = '✔ Favoris ajouté';
-            } else {
-                favoriteButton.textContent = '❤ Ajouter aux Favoris';
-            }
-        });
-    </script>     
+    <link rel="stylesheet" href="style.css">  
 </head>
 
 <body>
@@ -70,6 +38,40 @@
             <button class="favorite-button">❤ Ajouter aux Favoris</button>
         </div>
     </div>
+    
+    <script>
+        const audio = document.querySelector('audio');
+        const progressBar = document.querySelector('.progress');
+        const startTime = document.querySelector('.start-time');
+        const endTime = document.querySelector('.end-time');
+        const favoriteButton = document.querySelector('.favorite-button');
+    
+        audio.addEventListener('timeupdate', () => {
+            const duration = audio.duration || 0;
+            const currentTime = audio.currentTime || 0;
+    
+            const progressPercentage = (currentTime / duration) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+    
+            startTime.textContent = formatTime(currentTime);
+            endTime.textContent = formatTime(duration);
+        });
+    
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+    
+        favoriteButton.addEventListener('click', () => {
+            if (favoriteButton.textContent.includes('❤')) {
+                favoriteButton.textContent = '✔ Favoris ajouté';
+            } else {
+                favoriteButton.textContent = '❤ Ajouter aux Favoris';
+            }
+        });
+    </script>   
+
 </body>
 
 </html>

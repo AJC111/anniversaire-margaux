@@ -71,6 +71,12 @@ p {
 
 .cover-container {
     margin-bottom: 20px;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.cover-container.birthday {
+    margin-bottom: 20px;
     background-color: #ffffff;
     display: inline-block;
     border-radius: 15px;

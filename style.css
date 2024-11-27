@@ -51,11 +51,8 @@ p {
     margin: 0 auto;
 }
 
-
 .spotify-player {
     width: 320px;
-    display: flex;
-    margin: 0 auto;
     border-radius: 20px;
     padding: 20px;
     text-align: center;

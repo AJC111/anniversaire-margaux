@@ -6,17 +6,24 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #1e1e1e;
-    color: #fff;
+    background-color: #f3f3f3;
 }
 
 .spotify-player {
     width: 320px;
-    background-color: #2b2b2b;
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+}
+
+.spotify-player.pink {
+    border: 2px solid #ff89c0; /* Rose */
+}
+
+.spotify-player.green {
+    border: 2px solid #1db954; /* Vert Spotify */
 }
 
 .cover-container {
@@ -33,9 +40,7 @@ body {
 .cover {
     width: 100%;
     height: auto;
-    border-radius: 20px;
-    margin-bottom: 20px;
-/*    box-shadow: 0 4px 16px 0 rgba(80, 80, 80, 0.37); */
+    border-radius: 15px;
 }
 
 audio {
@@ -56,11 +61,12 @@ audio {
 .song-title {
     font-size: 18px;
     margin: 0;
+    color: #333;
 }
 
 .artist {
     font-size: 14px;
-    color: #a1a1a1;
+    color: #777;
 }
 
 /* Contrôles */
@@ -75,14 +81,14 @@ audio {
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
-    color: #a1a1a1;
+    color: #777;
     margin-top: 10px;
 }
 
 .progress-bar {
     flex: 1;
     height: 4px;
-    background-color: #444;
+    background-color: #ddd;
     border-radius: 2px;
     margin: 0 10px;
     position: relative;
@@ -91,13 +97,36 @@ audio {
 .progress {
     width: 50%;
     height: 100%;
-    background-color: #1db954; /* Couleur verte Spotify */
+    background-color: #1db954;
     border-radius: 2px;
 }
 
 /* Thèmes */
 .pink-theme {
     background-color: #fcd2de;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Bouton Favoris */
+.favorite-container {
+    margin-top: 15px;
+}
+
+.favorite-button {
+    border: none;
+    background-color: #ff89c0;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.favorite-button:hover {
+    background-color: #ff69b4;
 }
 
 .green-theme {
@@ -110,7 +139,9 @@ audio {
 
 .map-image {
     width: 100%;
+    max-width: 600px;
     height: auto;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     margin-top: 20px;
 }

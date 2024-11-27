@@ -5,7 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Margaux</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        const audio = document.querySelector('audio');
+        const progressBar = document.querySelector('.progress');
+        const startTime = document.querySelector('.start-time');
+        const endTime = document.querySelector('.end-time');
+    
+        audio.addEventListener('timeupdate', () => {
+            const duration = audio.duration;
+            const currentTime = audio.currentTime;
+    
+            const progressPercentage = (currentTime / duration) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+    
+            startTime.textContent = formatTime(currentTime);
+            endTime.textContent = formatTime(duration);
+        });
+    
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+    </script>    
 </head>
+
+<body class="spotify-page pink-theme">
+    <div class="spotify-player pink">
+
+        <div class="cover-container">
+            <img src="images/ballon_happy_birthday.png" alt="Happy Birthday Cover" class="cover">
+        </div>
+
+        <div class="info-container">
+            <h1 class="song-title">Happy Birthday Margaux</h1>
+            <p class="artist">Pour Little Sunshine ❤</p>
+        </div>
+
+        <div class="controls-container">
+            <audio controls>
+                <source src="audio/happy_birthday_naza.mp3" type="audio/mpeg">
+                Votre navigateur ne supporte pas l'élément audio.
+            </audio>
+        </div>
+
+        <div class="progress-container">
+            <span class="start-time">0:00</span>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <span class="end-time">3:46</span>
+        </div>
+
+        <div class="favorite-container">
+            <button class="favorite-button">❤ Ajouter aux Favoris</button>
+        </div>
+    </div>
+</body>
+
+<!--
 <body class="spotify-page pink-theme">
     <div class="container">
         <img src="images/ballon_happy_birthday.png" alt="Happy Birthday Cover" class="cover">
@@ -19,4 +77,6 @@
         <p class="description">J'éspère que cette chanson d'anniversaire te fera twerker 🎵</p>
     </div>
 </body>
+-->
+
 </html>

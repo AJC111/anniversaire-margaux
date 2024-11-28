@@ -38,60 +38,61 @@ document.addEventListener("DOMContentLoaded", () => {
             const section = document.createElement("div");
             section.classList.add("new-section");
 
-            const paragraph = document.createElement("p");
-            paragraph.classList.add("typewriter-text");
+            const textContainer = document.createElement("div");
+            textContainer.classList.add("text-container");
+            section.appendChild(textContainer);
 
-            section.appendChild(paragraph);
+            const img = document.createElement("img");
+            img.src = sections[currentIndex].image;
+            img.alt = `Photo ${currentIndex + 1}`;
+            img.style.opacity = 0;
+            img.style.transition = "opacity 0.5s ease-in-out";
+
             additionalContent.appendChild(section);
 
-            typeText(sections[currentIndex].text, paragraph, () => {
-                const img = document.createElement("img");
-                img.src = sections[currentIndex].image;
-                img.alt = `Photo ${currentIndex + 1}`;
-                img.style.opacity = 0;
+            typeText(sections[currentIndex].text, textContainer, () => {
                 section.appendChild(img);
-
                 setTimeout(() => {
                     img.style.opacity = 1;
+                    if (currentIndex < sections.length - 1) {
+                        loadMoreBtn.style.visibility = "visible";
+                    } else {
+                        loadMoreBtn.style.display = "none";
+                    }
                 }, 200);
-
-                if (currentIndex < sections.length - 1) {
-                    loadMoreBtn.style.visibility = "visible";
-                } else {
-                    loadMoreBtn.style.display = "none";
-                }
-
-                currentIndex++;
             });
+
+            currentIndex++;
         }
     });
 
-    function typeText(text, element, callback) {
+    function typeText(text, container, callback) {
         let i = 0;
         const typingSpeed = 50;
         const errorProbability = 0.02;
-    
+        let isDeleting = false;
 
-        element.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
-        const textContent = element.querySelector(".text-content");
-        const caret = element.querySelector(".typewriter-caret");
-    
+
+        container.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
+        const textContent = container.querySelector(".text-content");
+        const caret = container.querySelector(".typewriter-caret");
+
         function type() {
             if (i < text.length) {
-                if (Math.random() < errorProbability) {
+                if (Math.random() < errorProbability && !isDeleting) {
 
                     const incorrectChar = String.fromCharCode(
                         Math.floor(Math.random() * 26) + 97
                     );
                     textContent.textContent += incorrectChar;
-    
-                    setTimeout(() => {
+                    isDeleting = true;
 
+                    setTimeout(() => {
                         textContent.textContent = textContent.textContent.slice(0, -1);
+                        isDeleting = false;
                         type();
                     }, typingSpeed / 2);
                 } else {
-
                     textContent.textContent += text.charAt(i);
                     i++;
                     setTimeout(type, typingSpeed);
@@ -104,8 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }, 1000);
             }
         }
-    
+
         type();
-    }                       
-    
+    }
 });

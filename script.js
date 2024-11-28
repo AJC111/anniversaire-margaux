@@ -53,23 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
             typeText(sections[currentIndex].text, textContainer, () => {
                 section.appendChild(img);
                 setTimeout(() => {
-                    img.style.opacity = 1; 
+                    img.style.opacity = 1;
                     if (currentIndex < sections.length - 1) {
                         loadMoreBtn.style.visibility = "visible";
                     } else {
                         loadMoreBtn.style.display = "none";
                     }
                 }, 200);
-            });
 
-            currentIndex++;
+                currentIndex++;
+            });
         }
     });
 
     function typeText(text, container, callback) {
-        let i = 0;
+        let i = 0; 
         const typingSpeed = 50;
-        const errorProbability = 0.03;
+        const errorProbability = 0.02;
         let isDeleting = false;
 
         container.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function type() {
             if (i < text.length) {
                 if (Math.random() < errorProbability && !isDeleting) {
+
                     const incorrectChar = String.fromCharCode(
                         Math.floor(Math.random() * 26) + 97
                     );
@@ -91,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         type();
                     }, typingSpeed / 2);
                 } else {
+
                     textContent.textContent += text.charAt(i);
                     i++;
                     setTimeout(type, typingSpeed);

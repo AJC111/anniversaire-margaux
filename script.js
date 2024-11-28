@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     loadMoreBtn.style.display = "none";
                 }
 
-                currentIndex++; // Incrémente après l'affichage
+                currentIndex++;
             });
         }
     });
@@ -69,38 +69,44 @@ document.addEventListener("DOMContentLoaded", () => {
     function typeText(text, element, callback) {
         let i = 0;
         const typingSpeed = 60;
-        const errorProbability = 0.02;
+        const errorProbability = 0.03; 
         let isMakingError = false;
+    
+
+        const caret = document.createElement("span");
+        caret.classList.add("typewriter-caret");
+        element.appendChild(caret);
     
         function type() {
             if (i < text.length) {
                 if (!isMakingError && Math.random() < errorProbability) {
-
                     isMakingError = true;
                     const incorrectChar = String.fromCharCode(
                         Math.floor(Math.random() * 26) + 97
                     ); 
-                    element.textContent = element.textContent + incorrectChar;
+                    element.textContent = element.textContent.slice(0, -1) + incorrectChar;
     
                     setTimeout(() => {
-    
                         element.textContent = element.textContent.slice(0, -1);
                         isMakingError = false;
                         type();
                     }, typingSpeed / 2);
                 } else {
-                 
+
                     element.textContent += text.charAt(i);
                     i++;
                     setTimeout(type, typingSpeed);
                 }
             } else {
-            
-                callback();
+
+                setTimeout(() => {
+                    caret.remove();
+                    callback();
+                }, 1000);
             }
         }
     
         type();
-    }    
+    }        
     
 });

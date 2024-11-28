@@ -69,31 +69,31 @@ document.addEventListener("DOMContentLoaded", () => {
     function typeText(text, element, callback) {
         let i = 0;
         const typingSpeed = 60;
-        const errorProbability = 0.03; 
+        const errorProbability = 0.02;
         let isMakingError = false;
     
 
-        const caret = document.createElement("span");
-        caret.classList.add("typewriter-caret");
-        element.appendChild(caret);
+        element.innerHTML = `<span class="typewriter-caret"></span>`;
+        const caret = element.querySelector(".typewriter-caret");
     
         function type() {
             if (i < text.length) {
                 if (!isMakingError && Math.random() < errorProbability) {
+                    
                     isMakingError = true;
                     const incorrectChar = String.fromCharCode(
                         Math.floor(Math.random() * 26) + 97
                     ); 
-                    element.textContent = element.textContent.slice(0, -1) + incorrectChar;
+                    caret.insertAdjacentText("beforebegin", incorrectChar);
     
                     setTimeout(() => {
-                        element.textContent = element.textContent.slice(0, -1);
+                        caret.previousSibling.remove(); 
                         isMakingError = false;
                         type();
                     }, typingSpeed / 2);
                 } else {
-
-                    element.textContent += text.charAt(i);
+                    
+                    caret.insertAdjacentText("beforebegin", text.charAt(i));
                     i++;
                     setTimeout(type, typingSpeed);
                 }
@@ -107,6 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     
         type();
-    }        
+    }            
     
 });

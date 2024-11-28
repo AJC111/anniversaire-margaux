@@ -68,51 +68,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function typeText(text, element, callback) {
         let i = 0;
-        const typingSpeed = 60;
+        const typingSpeed = 50;
         const errorProbability = 0.02;
-        let isMakingError = false;
     
 
-        element.innerHTML = `<span class="typewriter-caret"></span>`;
+        element.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
+        const textContent = element.querySelector(".text-content");
         const caret = element.querySelector(".typewriter-caret");
     
-        function typeText(text, element, callback) {
-            let i = 0;
-            const typingSpeed = 50;
-            const errorProbability = 0.02;
-        
-            element.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
-            const textContent = element.querySelector(".text-content");
-            const caret = element.querySelector(".typewriter-caret");
-        
-            function type() {
-                if (i < text.length) {
-                    if (Math.random() < errorProbability) {
+        function type() {
+            if (i < text.length) {
+                if (Math.random() < errorProbability) {
 
-                        const incorrectChar = String.fromCharCode(
-                            Math.floor(Math.random() * 26) + 97
-                        );
-                        caret.insertAdjacentText("beforebegin", incorrectChar);
-        
-                        setTimeout(() => {
-                            textContent.textContent = textContent.textContent.slice(0, -1);
-                            type();
-                        }, typingSpeed / 2);
-                    } else {
-                        caret.insertAdjacentText("beforebegin", text.charAt(i));
-                        i++;
-                        setTimeout(type, typingSpeed);
-                    }
-                } else {
+                    const incorrectChar = String.fromCharCode(
+                        Math.floor(Math.random() * 26) + 97
+                    );
+                    textContent.textContent += incorrectChar;
+    
                     setTimeout(() => {
-                        caret.remove();
-                        callback();
-                    }, 1000);
+
+                        textContent.textContent = textContent.textContent.slice(0, -1);
+                        type();
+                    }, typingSpeed / 2);
+                } else {
+
+                    textContent.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, typingSpeed);
                 }
+            } else {
+
+                setTimeout(() => {
+                    caret.remove();
+                    callback();
+                }, 1000);
             }
-        
-            type();
         }
-    }                    
+    
+        type();
+    }                       
     
 });

@@ -251,7 +251,7 @@ audio {
     height: 1em;
     background-color: #555;
     animation: blink-caret 0.7s step-end infinite;
-    vertical-align: bottom;
+    position: absolute;
     margin-left: 2px;
 }
 

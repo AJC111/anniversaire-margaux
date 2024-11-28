@@ -69,43 +69,58 @@ document.addEventListener("DOMContentLoaded", () => {
     function typeText(text, container, callback) {
         let i = 0;
         const typingSpeed = 50;
-        const errorProbability = 0.02;
+        const errorProbability = 0.03;
         let isDeleting = false;
-
-
+    
         container.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
         const textContent = container.querySelector(".text-content");
         const caret = container.querySelector(".typewriter-caret");
-
+    
+        function updateCaretPosition() {
+            const range = document.createRange();
+            const sel = window.getSelection();
+    
+            range.setStart(textContent, textContent.childNodes.length);
+            range.collapse(true);
+    
+            sel.removeAllRanges();
+            sel.addRange(range);
+    
+            const rect = range.getBoundingClientRect();
+            caret.style.top = `${rect.bottom}px`;
+            caret.style.left = `${rect.right}px`;
+        }
+    
         function type() {
             if (i < text.length) {
                 if (Math.random() < errorProbability && !isDeleting) {
-
                     const incorrectChar = String.fromCharCode(
                         Math.floor(Math.random() * 26) + 97
                     );
                     textContent.textContent += incorrectChar;
                     isDeleting = true;
-
+    
                     setTimeout(() => {
                         textContent.textContent = textContent.textContent.slice(0, -1);
                         isDeleting = false;
+                        updateCaretPosition();
                         type();
                     }, typingSpeed / 2);
                 } else {
                     textContent.textContent += text.charAt(i);
                     i++;
+                    updateCaretPosition();
                     setTimeout(type, typingSpeed);
                 }
             } else {
-
                 setTimeout(() => {
                     caret.remove();
                     callback();
                 }, 1000);
             }
         }
-
+    
         type();
     }
+    
 });

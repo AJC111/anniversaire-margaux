@@ -251,8 +251,16 @@ audio {
     height: 1em;
     background-color: #555;
     animation: blink-caret 0.7s step-end infinite;
-    position: absolute;
+    vertical-align: bottom;
     margin-left: 2px;
+}
+
+.new-section {
+    margin-top: 30px;
+}
+
+.additional-content p {
+    margin-bottom: 15px;
 }
 
 @keyframes blink-caret {

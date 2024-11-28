@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadMoreBtn.addEventListener("click", () => {
         if (currentIndex < sections.length) {
+            loadMoreBtn.style.visibility = "hidden";
+
             const section = document.createElement("div");
             section.classList.add("new-section");
 
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             additionalContent.appendChild(section);
 
             typeText(sections[currentIndex].text, textContainer, () => {
+                textContainer.classList.add("writing-complete");
                 section.appendChild(img);
                 setTimeout(() => {
                     img.style.opacity = 1;
@@ -57,21 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     } else {
                         loadMoreBtn.style.display = "none";
                     }
+                    currentIndex++;
                 }, 200);
             });
-
-            currentIndex++;
-        } else {
-            loadMoreBtn.style.display = "none";
         }
     });
 
     function typeText(text, container, callback) {
         let i = 0;
         const typingSpeed = 50;
-        const errorProbability = 0.03;
+        const errorProbability = 0.02;
         let isDeleting = false;
-    
+
         function type() {
             if (i < text.length) {
                 if (Math.random() < errorProbability && !isDeleting) {
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
                     container.textContent += incorrectChar;
                     isDeleting = true;
-    
+
                     setTimeout(() => {
                         container.textContent = container.textContent.slice(0, -1);
                         isDeleting = false;
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(callback, 1000);
             }
         }
-    
+
         type();
-    }    
+    }
 });

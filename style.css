@@ -259,6 +259,10 @@ audio {
 }
 */
 
+.text-content.writing-complete::after {
+    content: none; /* Supprime la barre clignotante */
+}
+
 .text-content::after {
     content: "";
     display: inline-block;

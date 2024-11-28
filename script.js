@@ -68,31 +68,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function typeText(text, element, callback) {
         let i = 0;
-        const typingSpeed = 80;
-        const errorProbability = 0.08;
+        const typingSpeed = 60;
+        const errorProbability = 0.02;
         let isMakingError = false;
     
         function type() {
-            if (!isMakingError && Math.random() < errorProbability && i > 0) {
-                isMakingError = true;
-                element.textContent = element.textContent.slice(0, -1);
-                setTimeout(type, typingSpeed / 2);
-            } else if (isMakingError) {
+            if (i < text.length) {
+                if (!isMakingError && Math.random() < errorProbability) {
 
-                isMakingError = false;
-                setTimeout(type, typingSpeed);
-            } else if (i < text.length) {
-
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, typingSpeed);
+                    isMakingError = true;
+                    const incorrectChar = String.fromCharCode(
+                        Math.floor(Math.random() * 26) + 97
+                    ); 
+                    element.textContent = element.textContent + incorrectChar;
+    
+                    setTimeout(() => {
+    
+                        element.textContent = element.textContent.slice(0, -1);
+                        isMakingError = false;
+                        type();
+                    }, typingSpeed / 2);
+                } else {
+                 
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, typingSpeed);
+                }
             } else {
-
+            
                 callback();
             }
         }
     
         type();
-    }
+    }    
     
 });

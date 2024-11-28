@@ -4,29 +4,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sections = [
         {
-            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois!",
+            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois 🍳❤️ !",
             image: "images/premier_repas.jpeg"
         },
         {
-            text: "Nos premiers week-ends en Bretagne ont marqué le début d'une belle aventure à deux.",
+            text: "Et puis il y a eu les premiers week-ends chez l'un, chez l'autre (mais surtout en Bretagne).",
             image: "images/premiers_we_bretagne1.jpeg"
         },
         {
-            text: "Le premier 'oui' échangé restera un moment gravé dans nos mémoires.",
+            text: "À un moment, il fallait bien officialiser ça : je t'ai dit 'oui' (le premier et pas le dernier, je l'espère).",
             image: "images/premier_oui.jpeg"
         },
         {
-            text: "Une visite de château pour célébrer notre complicité et notre amour grandissant.",
+            text: "On s'est découvert des passions communes comme les visites de château. Je suis sûr qu'on était vicomte et vicomtesse dans une autre vie 🏰✨.",
             image: "images/premier_chateau.jpeg"
         },
         {
-            text: "Des expériences culinaires amusantes et pleines de saveurs.",
+            text: "Le commencement des expériences culinaires risquées... T'es tellement plus douée pour le gyoza artistique.",
             image: "images/premieres_experiences_culinaires.jpeg"
         },
         {
-            text: "Le premier envol de nos rêves communs, toujours plus haut.",
+            text: "Le premier envol d'une longue liste, pour sûr ! T'as un beau billet cadeau pour le prochain voyage maintenant 🛫 ",
             image: "images/premier_envol.jpeg"
-        }
+        },
+        {
+            text: "Plein d'autres vols à l'avenir, mais aussi plein d'autres aventures en camion 🚐...",
+            image: "images/premier_camion.jpeg"
+        },
+        {
+            text: "... pour découvrir encore d'autres plages magnifiques et rêver, le regard perdu dans l'horizon.",
+            image: "images/premiere_plage.jpeg"
+        },
+        {
+            text: "Mais avant tout ça, il faut que tu saches qu'il y a une petite fille qui serait très fière et rassurée de voir ce que la Margaux de 29 ans maintenant est devenue. Une femme forte, géniale et magnifique 💖 ! Encore bon anniversaire mon amour 💝.",
+            image: "images/margaux_petite.jpg"
+        }        
     ];
 
     let currentIndex = 0;

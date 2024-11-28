@@ -68,27 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function typeText(text, element, callback) {
         let i = 0;
-        const typingSpeed = 50;
-        const errorProbability = 0.1;
+        const typingSpeed = 80;
+        const errorProbability = 0.08;
         let isMakingError = false;
-
+    
         function type() {
             if (!isMakingError && Math.random() < errorProbability && i > 0) {
                 isMakingError = true;
-                element.textContent = element.textContent.slice(0, -1); // Simule une suppression
+                element.textContent = element.textContent.slice(0, -1);
                 setTimeout(type, typingSpeed / 2);
             } else if (isMakingError) {
+
                 isMakingError = false;
                 setTimeout(type, typingSpeed);
             } else if (i < text.length) {
+
                 element.textContent += text.charAt(i);
                 i++;
                 setTimeout(type, typingSpeed);
             } else {
+
                 callback();
             }
         }
-
+    
         type();
     }
+    
 });

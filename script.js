@@ -76,37 +76,43 @@ document.addEventListener("DOMContentLoaded", () => {
         element.innerHTML = `<span class="typewriter-caret"></span>`;
         const caret = element.querySelector(".typewriter-caret");
     
-        function type() {
-            if (i < text.length) {
-                if (!isMakingError && Math.random() < errorProbability) {
-                    
-                    isMakingError = true;
-                    const incorrectChar = String.fromCharCode(
-                        Math.floor(Math.random() * 26) + 97
-                    ); 
-                    caret.insertAdjacentText("beforebegin", incorrectChar);
-    
-                    setTimeout(() => {
-                        caret.previousSibling.remove(); 
-                        isMakingError = false;
-                        type();
-                    }, typingSpeed / 2);
-                } else {
-                    
-                    caret.insertAdjacentText("beforebegin", text.charAt(i));
-                    i++;
-                    setTimeout(type, typingSpeed);
-                }
-            } else {
+        function typeText(text, element, callback) {
+            let i = 0;
+            const typingSpeed = 50;
+            const errorProbability = 0.02;
+        
+            element.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
+            const textContent = element.querySelector(".text-content");
+            const caret = element.querySelector(".typewriter-caret");
+        
+            function type() {
+                if (i < text.length) {
+                    if (Math.random() < errorProbability) {
 
-                setTimeout(() => {
-                    caret.remove();
-                    callback();
-                }, 1000);
+                        const incorrectChar = String.fromCharCode(
+                            Math.floor(Math.random() * 26) + 97
+                        );
+                        caret.insertAdjacentText("beforebegin", incorrectChar);
+        
+                        setTimeout(() => {
+                            textContent.textContent = textContent.textContent.slice(0, -1);
+                            type();
+                        }, typingSpeed / 2);
+                    } else {
+                        caret.insertAdjacentText("beforebegin", text.charAt(i));
+                        i++;
+                        setTimeout(type, typingSpeed);
+                    }
+                } else {
+                    setTimeout(() => {
+                        caret.remove();
+                        callback();
+                    }, 1000);
+                }
             }
+        
+            type();
         }
-    
-        type();
-    }            
+    }                    
     
 });

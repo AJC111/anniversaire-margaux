@@ -241,6 +241,12 @@ audio {
 }
 
 
+
+.text-content {
+    display: inline-block;
+    white-space: pre-wrap;
+}
+
 .typewriter-caret {
     display: inline-block;
     width: 2px;
@@ -248,6 +254,7 @@ audio {
     background-color: #555;
     animation: blink-caret 0.7s step-end infinite;
     vertical-align: bottom;
+    margin-left: 2px;
 }
 
 @keyframes blink-caret {
@@ -255,7 +262,6 @@ audio {
         background-color: transparent;
     }
 }
-
 
 /*
 @keyframes blink-caret {

@@ -32,14 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
 
     loadMoreBtn.addEventListener("click", () => {
-        loadMoreBtn.style.visibility = "hidden";
-
         if (currentIndex < sections.length) {
             const section = document.createElement("div");
             section.classList.add("new-section");
 
             const textContainer = document.createElement("div");
-            textContainer.classList.add("text-container");
+            textContainer.classList.add("text-content");
             section.appendChild(textContainer);
 
             const img = document.createElement("img");
@@ -60,52 +58,44 @@ document.addEventListener("DOMContentLoaded", () => {
                         loadMoreBtn.style.display = "none";
                     }
                 }, 200);
-
-                currentIndex++;
             });
+
+            currentIndex++;
+        } else {
+            loadMoreBtn.style.display = "none";
         }
     });
 
     function typeText(text, container, callback) {
-        let i = 0; 
+        let i = 0;
         const typingSpeed = 50;
-        const errorProbability = 0.02;
+        const errorProbability = 0.03;
         let isDeleting = false;
-
-        container.innerHTML = `<span class="text-content"></span><span class="typewriter-caret"></span>`;
-        const textContent = container.querySelector(".text-content");
-        const caret = container.querySelector(".typewriter-caret");
-
+    
         function type() {
             if (i < text.length) {
                 if (Math.random() < errorProbability && !isDeleting) {
-
                     const incorrectChar = String.fromCharCode(
                         Math.floor(Math.random() * 26) + 97
                     );
-                    textContent.textContent += incorrectChar;
+                    container.textContent += incorrectChar;
                     isDeleting = true;
-
+    
                     setTimeout(() => {
-                        textContent.textContent = textContent.textContent.slice(0, -1);
+                        container.textContent = container.textContent.slice(0, -1);
                         isDeleting = false;
                         type();
                     }, typingSpeed / 2);
                 } else {
-
-                    textContent.textContent += text.charAt(i);
+                    container.textContent += text.charAt(i);
                     i++;
                     setTimeout(type, typingSpeed);
                 }
             } else {
-
-                setTimeout(() => {
-                    caret.remove();
-                    callback();
-                }, 1000);
+                setTimeout(callback, 1000);
             }
         }
-
+    
         type();
-    }
+    }    
 });

@@ -245,6 +245,7 @@ audio {
     white-space: pre-wrap;
 }
 
+/*
 .typewriter-caret {
     display: inline-block;
     width: 2px;
@@ -256,6 +257,24 @@ audio {
     position: relative;
     top: 0;
 }
+*/
+
+.text-content::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background-color: #555;
+    animation: blink-caret 0.7s step-end infinite;
+    vertical-align: bottom;
+    margin-left: 2px;
+}
+
+@keyframes blink-caret {
+    50% {
+        background-color: transparent;
+    }
+}
 
 .new-section {
     margin-top: 30px;
@@ -263,12 +282,6 @@ audio {
 
 .additional-content p {
     margin-bottom: 15px;
-}
-
-@keyframes blink-caret {
-    50% {
-        background-color: transparent;
-    }
 }
 
 /*

@@ -8,23 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
             image: "images/premier_repas.jpeg"
         },
         {
-            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois!",
+            text: "Nos premiers week-ends en Bretagne ont marqué le début d'une belle aventure à deux.",
             image: "images/premiers_we_bretagne1.jpeg"
         },
         {
-            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois!",
+            text: "Le premier 'oui' échangé restera un moment gravé dans nos mémoires.",
             image: "images/premier_oui.jpeg"
         },
         {
-            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois!",
+            text: "Une visite de château pour célébrer notre complicité et notre amour grandissant.",
             image: "images/premier_chateau.jpeg"
         },
         {
-            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois!",
+            text: "Des expériences culinaires amusantes et pleines de saveurs.",
             image: "images/premieres_experiences_culinaires.jpeg"
         },
         {
-            text: "C'est d'ailleurs après ce premier regard à l'entrée d'un parking que nous avons cuisiné ensemble pour la première fois!",
+            text: "Le premier envol de nos rêves communs, toujours plus haut.",
             image: "images/premier_envol.jpeg"
         }
     ];
@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
 
     loadMoreBtn.addEventListener("click", () => {
+        loadMoreBtn.style.visibility = "hidden";
+
         if (currentIndex < sections.length) {
             const section = document.createElement("div");
             section.classList.add("new-section");
@@ -46,18 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 const img = document.createElement("img");
                 img.src = sections[currentIndex].image;
                 img.alt = `Photo ${currentIndex + 1}`;
+                img.style.opacity = 0;
                 section.appendChild(img);
 
                 setTimeout(() => {
                     img.style.opacity = 1;
                 }, 200);
 
-                if (currentIndex === sections.length - 1) {
+                if (currentIndex < sections.length - 1) {
+                    loadMoreBtn.style.visibility = "visible";
+                } else {
                     loadMoreBtn.style.display = "none";
                 }
-            });
 
-            currentIndex++;
+                currentIndex++; // Incrémente après l'affichage
+            });
         }
     });
 
@@ -65,17 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
         let i = 0;
         const typingSpeed = 50;
         const errorProbability = 0.1;
+        let isMakingError = false;
 
         function type() {
-            if (i < text.length) {
-                if (Math.random() < errorProbability && i > 0) {
-                    element.textContent = element.textContent.slice(0, -1);
-                    setTimeout(type, typingSpeed / 2);
-                } else {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, typingSpeed);
-                }
+            if (!isMakingError && Math.random() < errorProbability && i > 0) {
+                isMakingError = true;
+                element.textContent = element.textContent.slice(0, -1); // Simule une suppression
+                setTimeout(type, typingSpeed / 2);
+            } else if (isMakingError) {
+                isMakingError = false;
+                setTimeout(type, typingSpeed);
+            } else if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, typingSpeed);
             } else {
                 callback();
             }

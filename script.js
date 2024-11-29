@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
             image: "images/premiers_we_bretagne1.jpeg"
         },
         {
-            text: "À un moment, il fallait bien officialiser ça : je t'ai dit 'oui' (le premier et pas le dernier, je l'espère).",
+            text: "À un moment il fallait bien officialiser ça. Je t'ai dit 'oui' ce jour là (le premier et pas le dernier, je l'espère)!",
             image: "images/premier_oui.jpeg"
         },
         {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             image: "images/premiere_plage.jpeg"
         },
         {
-            text: "Mais avant tout ça, il faut que tu saches qu'il y a une petite fille qui serait très fière et rassurée de voir ce que la Margaux de 29 ans maintenant est devenue. Une femme forte, géniale et magnifique 💖 ! Encore bon anniversaire mon amour 💝.",
+            text: "Mais avant tout ça, il faut que tu saches qu'il y a une petite fille qui serait très fière et rassurée de voir ce que la Margaux de 29 ans maintenant est devenue. Une femme forte, géniale et magnifique 💖 ! Encore bon anniversaire mon amour 💝",
             image: "images/margaux_petite.jpg"
         }        
     ];
